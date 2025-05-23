@@ -46,6 +46,9 @@ Foi baixado de [**Themewagon**](https://themewagon.com/themes/free-bootstrap-eco
 ## 📖 Como Executar o Projeto
 
 ### 🔽 Clonar o repositório:
+```bash
+git clone https://github.com/AlisonRian/FoodAPI.git
+```
 - Configure o application.properties com sua credenciais do PostgreSQL
 - Rode o projeto
 - Acesse em http://localhost:8080
