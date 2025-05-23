@@ -29,6 +29,16 @@ Foi baixado de [**Themewagon**](https://themewagon.com/themes/free-bootstrap-eco
 - HTML, CSS, JavaScript, Bootstrap
 
 ## 📷 Demonstrações
+### Tela de Cadastro de Produtos
+![Cadastro Produto](images-readme/cadastro-produto.jpg)
+### Tela de Editar Produtos
+![Cadastro Produto](images-readme/editar-produto.jpg)
+### Tela inicial: admin
+![Home Admin](images-readme/home-admin.jpg)
+### Tela inicial: user
+![Home User](images-readme/home-user.jpg)
+### Tela do carrinho
+![Carrinho](images-readme/carrinho.jpg)
 
 ## 📖 Como Executar o Projeto
 
