@@ -13,7 +13,7 @@ Sistema para gerenciamento de produtos alimenticios, com controle de usuários e
   
 ---
 ⚠️ **Observação:** O frontend (HTML, CSS e JavaScript) não foi desenvolvido por mim, apenas o adaptei para as minha necessidades e adicionei algumas coisas novas.
-Foi baixado de (https://themewagon.com/themes/free-bootstrap-ecommerce-template-electro/) e integrado à aplicação utilizando **Thymeleaf** e **Spring Boot**.
+Foi baixado de [**Themewagon**](https://themewagon.com/themes/free-bootstrap-ecommerce-template-electro/) e integrado à aplicação utilizando **Thymeleaf** e **Spring Boot**.
 ---
 
 
