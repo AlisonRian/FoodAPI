@@ -9,7 +9,10 @@ Sistema para gerenciamento de produtos alimenticios, com controle de usuários e
 - 🔒 Armazenamento seguro de senhas usando `BCryptPasswordEncoder`.
 - 🛒 Carrinho de compras com armazenamento de itens via **cookies** com duração de 24 horas.
 - 🌐 Integração entre backend e frontend utilizando **Thymeleaf** para renderização dinâmica das páginas.
-
+---
+⚠️ **Observação:** O frontend (HTML, CSS e JavaScript) não foi desenvolvido por mim, apenas o adaptei para as minha necessidades e adicionei algumas coisas novas.
+Foi baixado de (https://themewagon.com/themes/free-bootstrap-ecommerce-template-electro/) e integrado à aplicação utilizando **Thymeleaf** e **Spring Boot**.
+---
 ## 🚀 Tecnologias Utilizadas
 - Java 
 - Spring Boot
@@ -25,9 +28,6 @@ Sistema para gerenciamento de produtos alimenticios, com controle de usuários e
 ## 📖 Como Executar o Projeto
 
 ### 🔽 Clonar o repositório:
-```bash
-git clone https://github.com/AlisonRian/FoodAPI.git
-```
 - Configure o application.properties com sua credenciais do PostgreSQL
 - Rode o projeto
 - Acesse em http://localhost:8080
