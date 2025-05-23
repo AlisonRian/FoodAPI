@@ -1,6 +1,7 @@
 package ufrn.com.AvaliacaoWeb.controller;
 
 import jakarta.validation.Valid;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -42,8 +43,14 @@ public class SecurityController {
     public String getLoginPage(){
         return "login";
     }
-    @GetMapping("/logout")
-    public String getLogoutPage(){
-        return "logout";
+    @GetMapping("/redirect")
+    public String redirect(Authentication authentication){
+        if (authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))){
+            return "redirect:/admin";
+        }
+        if(authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_USER"))){
+            return "redirect:/";
+        }
+        return "redirect:/login";
     }
 }

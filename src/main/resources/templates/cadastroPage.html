@@ -1,54 +1,67 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Cadastro</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
-    <!-- Custom stlylesheet --><!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"/>
-
-    <!-- Slick -->
     <link type="text/css" rel="stylesheet" href="/css/slick.css"/>
     <link type="text/css" rel="stylesheet" href="/css/slick-theme.css"/>
-
-    <!-- nouislider -->
     <link type="text/css" rel="stylesheet" href="/css/nouislider.min.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
     <div  th:insert="~{fragments/header::header}"></div>
-    <h1 style="text-align: center;margin-top: 50px">Cadastro de Comidas</h1>
-    <form style="display: flex;justify-content: center;align-items: center;flex-direction: column" th:object="${comidas}" method="post" th:action="@{/salvar}" enctype="multipart/form-data">
-        <div style="width: 200px;" class="input-group mb-3">
-            <input type="hidden" class="form-control" placeholder="id" aria-label="Username" aria-describedby="basic-addon1">
+    <nav th:fragment="nav" id="navigation">
+        <div class="container">
+            <div id="responsive-nav">
+                <ul class="main-nav nav navbar-nav">
+                    <li ><a th:href="@{/redirect}">Home</a></li>
+                    <li class="active"><a th:href="@{/cadastroPage}">Novo Produto</a></li>
+                </ul>
+            </div>
         </div>
+    </nav>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h3 class="title">Cadastrar Produto</h3>
+                    </div>
+                </div>
+            </div>
 
-        <div style="width: 200px" class="input-group mb-3">
-            <input th:field="*{nome}" type="text" class="form-control" placeholder="nome" aria-label="Username" aria-describedby="basic-addon1">
+            <div class="newsletter">
+                <form th:object="${comidas}" method="post" th:action="@{/salvar}" enctype="multipart/form-data">
+                    <div style="width: 200px;" class="input-group mb-3">
+                        <input type="hidden" class="form-control" placeholder="id" aria-label="id" aria-describedby="basic-addon1">
+                    </div>
+
+                    <input  th:field="*{nome}" class="input" type="text" placeholder="Nome">
+                    <button class="newsletter-btn" disabled><i class="fa fa-tag" aria-hidden="true"></i></button>
+
+                    <input th:field="*{preco}" class="input" type="text" placeholder="Preço">
+                    <button class="newsletter-btn" disabled><i class="fa fa-usd" aria-hidden="true"></i></button>
+
+                    <input th:field="*{descricao}" class="input" type="text" placeholder="Descrição">
+                    <button class="newsletter-btn" disabled><i class="fa fa-align-left" aria-hidden="true"></i></button>
+
+                    <input th:field="*{categoria}" class="input" type="text" placeholder="Categoria">
+                    <button class="newsletter-btn" disabled><i class="fa fa-list" aria-hidden="true"></i></button>
+                    <div class="custom-input">
+                        <label for="file-input" >Selecionar Imagem <i class="fa fa-upload" aria-hidden="true"></i> </label>
+                        <input  id="file-input" type="file" name="file" style="display: none">
+                    </div> <br>
+
+                    <button type="submit" class="btn-submit">Cadastrar</button>
+                </form>
+            </div>
         </div>
+    </div>
 
-        <div style="width: 200px" class="input-group mb-3">
-            <input th:field="*{preco}" type="text" class="form-control" placeholder="preço" aria-label="Username" aria-describedby="basic-addon1">
-        </div>
-
-        <div style="width: 200px" class="input-group mb-3">
-            <input th:field="*{descricao}" type="text" class="form-control" placeholder="descrição" aria-label="Username" aria-describedby="basic-addon1">
-        </div>
-
-        <div style="width: 200px" class="input-group mb-3">
-            <input th:field="*{categoria}" type="text" class="form-control" placeholder="categoria" aria-label="Username" aria-describedby="basic-addon1">
-        </div>
-        <input type="file" name="file" >
-<!--        <input placeholder="id" type="hidden"  />-->
-<!--        <input placeholder="nome" type="text"  />-->
-<!--        <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" style="color: red"> </span> <br />-->
-<!--        <input placeholder="preço" type="number" step="0.01" th:field="*{preco}" /><br />-->
-<!--        <input placeholder="descriço" type="text" th:field="*{descricao}" /><br />-->
-<!--        <input placeholder="categoria" type="text" th:field="*{categoria}" /><br />-->
-        <button style="margin-bottom: 50px; margin-top: 10px" type="submit" class="btn btn-primary">Cadastrar</button>
-
-    </form>
     <div th:insert="~{fragments/footer::footer}" ></div>
+    <div th:insert="~{fragments/scripts::scripts}"></div>
 </body>
 </html>
