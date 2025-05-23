@@ -33,7 +33,7 @@ public class ComidasController {
         this.fileStorageService = fileStorageService;
         this.comidasRepository = comidasRepository;
     }
-    @GetMapping("/index")
+    @GetMapping("/")
     public String index(Model model, HttpServletResponse response) {
         model.addAttribute("comidas",comidasService.findAll());
         Date date = new Date();
@@ -88,7 +88,7 @@ public class ComidasController {
             mv.addObject("comida", comidas.get());
             return mv;
         }else{
-            return new ModelAndView("redirect:/");
+            return new ModelAndView("redirect:/redirect");
         }
     }
     @GetMapping("/adicionarCarrinho/{id}")
@@ -129,11 +129,10 @@ public class ComidasController {
             return mv;
         }
     }
-
     @GetMapping("/finalizarCompra")
     public String finalizarCompra(HttpSession session){
         session.invalidate();
-        return "redirect:/index";
+        return "redirect:/";
     }
 
 

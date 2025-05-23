@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="admin" class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+
+      <!-- section title -->
+      <div class="col-md-12">
+        <div class="section-title">
+          <h3 class="title">Produtos</h3>
+        </div>
+      </div>
+      <!-- /section title -->
+      <!-- Products tab & slick -->
+      <div class="col-md-12">
+        <div class="row">
+          <div class="products-tabs">
+            <!-- tab -->
+            <div id="tab1" class="tab-pane active">
+              <div class="products-slick" data-nav="#slick-nav-1">
+                <!-- product -->
+                <div th:each="comida:${comidas}"  class="product">
+                  <div class="product-img">
+                    <img th:src="@{'/images/'+${comida.imageUri}}" alt="">
+                  </div>
+                  <div class="product-body">
+                    <p th:text="${comida.categoria}" class="product-category"></p>
+                    <h3 th:text="${comida.nome}" class="product-name"><a href="#"></a></h3>
+                    <h4 th:text="${comida.preco}" class="product-price"></h4>
+
+                    <div class="product-rating">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+
+                    <div class="product-btns">
+
+                      <button class="add-to-wishlist">
+                        <a th:href="@{'/editar/'+${comida.id}}">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                          <span class="tooltipp">Editar</span>
+                        </a>
+                      </button>
+
+                      <button>
+                        <a th:href="@{'/deletar/'+${comida.id}}">
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                          <span class="tooltipp">Deletar</span>
+                        </a>
+                      </button>
+
+                    </div>
+                  </div>
+                  <div class="add-to-cart">
+                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i><a href="" >add ao carrinho</a></button>
+                  </div>
+                </div>
+                <!-- /product -->
+              </div>
+              <div id="slick-nav-1" class="products-slick-nav"></div>
+            </div>
+            <!-- /tab -->
+          </div>
+        </div>
+      </div>
+      <!-- Products tab & slick -->
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+  <div th:insert="~{fragments/scripts::scripts}"></div>
+
+</div>
+</body>
+</html>

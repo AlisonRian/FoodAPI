@@ -27,7 +27,7 @@ public class ComidasService {
         comidasRepository.saveAndFlush(comidas);
     }
     public List<Comidas> findAll(){
-        return comidasRepository.findAll();
+        return comidasRepository.findAllByIsDeletedIsNull();
     }
     public void delete(Long id) {
         Comidas comida = comidasRepository.findById(id).get();

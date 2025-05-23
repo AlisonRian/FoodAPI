@@ -15,24 +15,20 @@ public class SecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/login").permitAll();
-                    auth.requestMatchers("/index").permitAll();
-                    auth.requestMatchers("/logout").permitAll();
-                    auth.requestMatchers("/salvarUsuario").permitAll();
-                    auth.requestMatchers("/finalizarCompra").permitAll();
-                    auth.requestMatchers("/cadastroPage").hasRole("ADMIN");
-                    auth.requestMatchers("/admin").hasRole("ADMIN");
-                    auth.requestMatchers("/salvar").hasRole("ADMIN");
-                    auth.requestMatchers("/editar/").hasRole("ADMIN");
-                    auth.requestMatchers("/deletar").hasRole("ADMIN");
-                    auth.requestMatchers("/verCarrinho").hasRole("USER");
-                    auth.requestMatchers("/adicionarCarrinho").hasRole("USER");
-                    auth.requestMatchers("/finalizarCompra").hasRole("USER");
+                    auth.requestMatchers("/login","/index","/logout",
+                            "/salvarUsuario","/finalizarCompra").permitAll();
+                    auth.requestMatchers("/cadastroPage", "/admin", "/salvar",
+                            "/editar","/deletar").hasRole("ADMIN");
+                    auth.requestMatchers("/verCarrinho", "/adicionarCarrinho","/finalizarCompra").hasRole("USER");
                     auth.anyRequest().permitAll();
                 })
-                .formLogin(login -> login.loginPage("/login"))
+                .formLogin(login -> login.loginPage("/login")
+                        .defaultSuccessUrl("/redirect", true)
+                        .failureUrl("/login?error=true")
+                )
                 .logout(l -> {
                     l.logoutUrl("/logout");
+                    l.logoutSuccessUrl("/login?logout=true");
                     l.clearAuthentication(true);
                     l.deleteCookies().invalidateHttpSession(true);
                 })
